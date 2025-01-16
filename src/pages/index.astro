@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "@fontsource/dm-mono";
 ---
-
-<Layout>
-	<Welcome />
-</Layout>
+<body class="bg-gradient-to-r from-sky-200 to-indigo-600 ease-in-out min-h-screen flex flex-col">
+    <header class="bg-blue-600 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl font-bold">WIP</h1>
+        <nav class="space-x-4">
+          <a href="/" class="hover:underline">Link 1</a>
+          <a href="www.linkedin.com/in/lucas-kock/" class="hover:underline">Link 2</a>
+          <a href="/contact" class="hover:underline">Link 3</a>
+        </nav>
+      </div>
+    </header>
+  
+    <main class="wrapper p-20 flex-grow">
+      <h1 class="text-center text-5xl font-black">Hello world!</h1>
+      <p class="text-center text-m font-medium">This page was made with:</p>
+      <div class="grid grid-cols-2 gap-4 place-content-stretch h-48 p-6">
+        <div class="relative bg-gradient-to-tr from-sky-500 to-indigo-500 rounded-lg shadow-md text-center p-4">
+          <div class="absolute inset-0 bg-white rounded-lg transition-opacity duration-500 opacity-100 hover:opacity-0"></div>
+          <span class="relative z-10 text-black font-medium hover:text-white">Astro</span>
+        </div>
+        <div class="relative bg-gradient-to-tr from-green-400 to-blue-500 rounded-lg shadow-md text-center p-4">
+          <div class="absolute inset-0 bg-white rounded-lg transition-opacity duration-500 opacity-100 hover:opacity-0"></div>
+          <span class="relative z-10 text-black font-medium hover:text-white">Tailwind</span>
+        </div>
+        <div class="relative bg-gradient-to-tr from-yellow-400 to-pink-500 rounded-lg shadow-md text-center p-4">
+          <div class="absolute inset-0 bg-white rounded-lg transition-opacity duration-500 opacity-100 hover:opacity-0 "></div>
+          <span class="relative z-10 text-black font-medium hover:text-white">HTMX</span>
+        </div>
+        <div class="relative bg-gradient-to-tr from-purple-400 to-red-500 rounded-lg shadow-md text-center p-4">
+          <div class="absolute inset-0 bg-white rounded-lg transition-opacity duration-500 opacity-100 hover:opacity-0"></div>
+          <span class="relative z-10 text-black font-medium hover:text-white">Pure grit</span>
+        </div>
+      </div>
+    </main>
+  
+    <footer class="bg-gray-800 text-gray-300 p-4">
+      <div class=" mx-auto text-center">
+        <p>&copy; 2025- Lucas Alexander Kock.</p>
+      </div>
+    </footer>
+  </body>
+  
