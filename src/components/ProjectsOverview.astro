@@ -1,0 +1,32 @@
+<div class="projects-container flex flex-col gap-4">
+    <div class="project opacity-0 transition-opacity duration-700 ease-out" id="project-1">
+      <a href="#" class="block p-6 text-center bg-gray-300 rounded-lg shadow-md">Project 1</a>
+    </div>
+    <div class="project opacity-0 transition-opacity duration-700 ease-out" id="project-2">
+      <a href="#" class="block p-6 text-center bg-gray-300 rounded-lg shadow-md">Project 2</a>
+    </div>
+    <div class="project opacity-0 transition-opacity duration-700 ease-out" id="project-3">
+      <a href="#" class="block p-6 text-center bg-gray-300 rounded-lg shadow-md">Project 3</a>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const projects = document.querySelectorAll('.project');
+      
+      const handleScroll = () => {
+        projects.forEach((project, index) => {
+          const rect = project.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom >= 0) {
+            project.classList.add('opacity-100');
+            
+            (project as HTMLElement).style.transitionDelay = `${index * 0.2}s`;
+          }
+        });
+      };
+      
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Check on load if any elements are already in view
+    });
+  </script>
+  
