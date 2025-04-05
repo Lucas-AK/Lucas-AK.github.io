@@ -1,0 +1,32 @@
+---
+// components/TechStack.astro
+// Tech stack component showing programming languages with devicons
+
+interface TechItem {
+  name: string;
+  symbol: string;
+  icon?: string; // Optional devicon class
+}
+
+interface Props {
+  techStack: TechItem[];
+}
+
+const { techStack } = Astro.props;
+---
+
+<section class="mb-12 border-b border-black pb-8">
+  <h2 class="text-2xl font-bold mb-6">Technologies I've used</h2>
+  <ul class="flex flex-wrap gap-4">
+    {techStack.map(tech => (
+      <li class="border border-black px-3 py-1 flex items-center">
+        {tech.icon ? (
+          <i class={tech.icon + " mr-2 text-xl"}></i>
+        ) : (
+          <span class="font-bold mr-2">{tech.symbol}</span>
+        )}
+        {tech.name}
+      </li>
+    ))}
+  </ul>
+</section>

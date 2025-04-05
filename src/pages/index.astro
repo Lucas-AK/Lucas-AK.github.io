@@ -1,9 +1,108 @@
 ---
-import HeroText from '../components/HeroText.astro'
-import BaseLayout from '../layouts/BaseLayout.astro'
-import ProjectsOverview from '../components/ProjectsOverview.astro'
+// index.astro - Main file
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import WorkExperience from '../components/WorkExperience.astro';
+import Projects from '../components/Projects.astro';
+import TechStack from '../components/TechStack.astro';
+import Contact from '../components/Contact.astro';
+
+// Data can be moved to separate files if you prefer
+const projects = [
+  {
+    title: "PaintScope",
+    description: "A simple web app for searching miniature paints. My goal with this page is to make it simple and fast for people to use.",
+    link: "https://project1.example.com",
+    github: "https://github.com/yourusername/project1"
+  },
+  {
+    title: "Averburg",
+    description: "A simple, static web site used for displaying lore for my fictional town of Averburg. It's used in a Warhammer: The Old World tabletop campaign I'm running with some friends.",
+    link: "https://averburg.lucasak.dev",
+    github: "https://github.com/lucasalexanderk/averburg"
+  }
+];
+
+const techStack = [
+  { name: "C#", symbol: "C#", icon: "devicon-csharp-plain" },
+  { name: "JavaScript", symbol: "JS", icon: "devicon-javascript-plain" },
+  { name: "Tailwind", symbol: "TW", icon: "devicon-tailwindcss-plain" },
+  { name: "F#", symbol: "F#", icon: "devicon-fsharp-plain" },
+  { name: "HTMX", symbol: "</>" }, // No specific devicon for HTMX
+  { name: "Astro", symbol: "★", icon: "devicon-astro-plain" }, 
+  { name: "HTML", symbol: "<>", icon: "devicon-html5-plain" },
+  { name: "CSS", symbol: "CSS", icon: "devicon-css3-plain" },
+  { name: "Java", symbol: "J", icon: "devicon-java-plain" }, 
+  { name: "C", symbol: "C", icon: "devicon-c-plain" }, 
+  { name: "Python", symbol: "Py", icon: "devicon-python-plain" } 
+];
+
+const contacts = [
+  { icon: "devicon-github-plain", value: "https://github.com/LucasAlexanderK" },
+  { icon: "devicon-linkedin-plain", value: "https://linkedin.com/in/lucas-kock" },
+  { icon: "devicon-plain", value: "myemail@nope.com" }
+];
+
+
+const experience = [
+  {
+    role: "Junior Consultant",
+    company: "itm8",
+    period: "Aug 2024 – Present",
+    description: "Working on various full-stack web projects using modern technologies including .NET and front-end frameworks.",
+    link: "https://www.itm8.com/"
+  },
+  {
+    role: "Teaching Assistant",
+    company: "University of Copenhagen - Department of Computer Science",
+    period: "April 2024 – Present",
+    description: "I've taught in the courses Interaction Design and Programming and Problem Solving. Both courses are mandatory bachelors courses"
+  }
+];
+
 ---
-<BaseLayout>
-<HeroText>
-<ProjectsOverview>
+
+<BaseLayout title="Hi, I'm Lucas">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" slot="head" />
+  
+  <main class="max-w-2xl mx-auto px-4 py-16 font-mono">
+    <Hero name="Hi, I'm Lucas" intro="I'm a junior consultant and computer science student." />
+    <WorkExperience experience={experience} />
+    <Projects projects={projects} />
+    <TechStack techStack={techStack} />
+    <Contact contacts={contacts} 
+/>
+  </main>
 </BaseLayout>
+
+<style is:global>
+  /* Global styles to ensure black/white palette */
+  :root {
+    --bg-color: white;
+    --text-color: black;
+  }
+  
+  html, body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  /* Simple focus states */
+  a:focus, button:focus {
+    outline: 2px solid black;
+    outline-offset: 2px;
+  }
+  
+  /* Simple hover effect */
+  a:hover {
+    opacity: 0.7;
+  }
+  
+  /* Ensure devicons maintain black color */
+  .devicon-csharp-plain,
+  .devicon-javascript-plain,
+  .devicon-tailwindcss-plain,
+  .devicon-fsharp-plain {
+    color: black !important;
+  }
+</style>
