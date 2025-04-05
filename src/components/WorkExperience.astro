@@ -1,0 +1,39 @@
+---
+// components/WorkExperience.astro
+// Component to showcase work experience
+
+interface Experience {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  link?: string;
+}
+
+interface Props {
+  experience: Experience[];
+}
+
+const { experience } = Astro.props;
+---
+
+<section class="mb-12 border-b border-black pb-8">
+  <h2 class="text-2xl font-bold mb-6">Experience</h2>
+  <div class="space-y-8">
+    {experience.map(job => (
+      <div>
+        <h3 class="text-lg font-bold">{job.role} @ 
+          {job.link ? (
+            <a href={job.link} class="underline ml-1" target="_blank" rel="noopener noreferrer">
+              {job.company}
+            </a>
+          ) : (
+            <span class="ml-1">{job.company}</span>
+          )}
+        </h3>
+        <p class="italic text-sm mb-2">{job.period}</p>
+        <p>{job.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

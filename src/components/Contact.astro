@@ -1,0 +1,29 @@
+---
+// components/Contact.astro
+interface ContactItem {
+  icon: string;   
+  value: string;
+}
+
+interface Props {
+  contacts: ContactItem[];
+}
+
+const { contacts } = Astro.props;
+---
+
+<section class="mb-12 pb-8">
+  <div class="flex flex-wrap gap-4">
+    {contacts.map(contact => (
+<a
+  href={contact.value.includes("@") ? `mailto:${contact.value}` : contact.value}
+  target={contact.value.includes("@") ? '' : '_blank'}
+  rel={contact.value.includes("@") ? '' : 'noopener noreferrer'}
+  class="text-xl"
+>
+  <i class={contact.icon}></i>
+</a>
+
+    ))}
+  </div>
+</section>
