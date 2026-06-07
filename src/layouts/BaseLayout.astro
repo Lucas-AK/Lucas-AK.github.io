@@ -6,9 +6,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{Astro.props.title || "Portfolio"}</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <slot name="head" />
 </head>
 <body>
   <slot />
 </body>
 </html>
+
+<style is:global>
+  html {
+    background: #c0c0c0;
+  }
+  body {
+    margin: 0;
+    font-family: "Times New Roman", Times, serif;
+    color: #000;
+  }
+  .page {
+    max-width: 640px;
+    margin: 24px auto;
+    padding: 16px 24px;
+    background: #ffffff;
+    border: 1px solid #000;
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px 0;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 12px 0 8px 0;
+  }
+  h3 {
+    font-size: 16px;
+    margin: 8px 0 4px 0;
+  }
+  p {
+    margin: 6px 0;
+    line-height: 1.4;
+  }
+  a {
+    color: #0000ee;
+  }
+  a:visited {
+    color: #551a8b;
+  }
+  hr {
+    border: 0;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    margin: 16px 0;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  pre {
+    background: #f0f0f0;
+    border: 1px solid #808080;
+    padding: 8px;
+    overflow-x: auto;
+  }
+  code {
+    font-family: "Courier New", monospace;
+  }
+  .footer {
+    text-align: center;
+    color: #555;
+    margin-top: 16px;
+  }
+</style>

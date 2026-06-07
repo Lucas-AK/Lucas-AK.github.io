@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  link?: string;
+}
+
+const { title, link } = Astro.props;
+---
+
+<section>
+  <h2>Currently working on...</h2>
+  <h3>
+    {link ? (
+      <a href={link} target="_blank" rel="noopener noreferrer">{title}</a>
+    ) : (
+      <span>{title}</span>
+    )}
+  </h3>
+  <slot />
+</section>
+
+<style>
+  ul {
+    margin: 8px 0;
+  }
+</style>
