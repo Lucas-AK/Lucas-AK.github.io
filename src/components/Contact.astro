@@ -1,7 +1,6 @@
 ---
-// components/Contact.astro
 interface ContactItem {
-  icon: string;   
+  icon: string;
   value: string;
 }
 
@@ -12,18 +11,34 @@ interface Props {
 const { contacts } = Astro.props;
 ---
 
-<section class="mb-12 pb-8">
-  <div class="flex flex-wrap gap-4">
-    {contacts.map(contact => (
-<a
-  href={contact.value.includes("@") ? `mailto:${contact.value}` : contact.value}
-  target={contact.value.includes("@") ? '' : '_blank'}
-  rel={contact.value.includes("@") ? '' : 'noopener noreferrer'}
-  class="text-xl"
->
-  <i class={contact.icon}></i>
-</a>
-
-    ))}
-  </div>
+<section>
+  {contacts.map(contact => (
+    <a
+      href={contact.value.includes("@") ? `mailto:${contact.value}` : contact.value}
+      target={contact.value.includes("@") ? '' : '_blank'}
+      rel={contact.value.includes("@") ? '' : 'noopener noreferrer'}
+    >
+      {contact.icon.startsWith("devicon-") ? <i class={contact.icon}></i> : <span class="symbol">{contact.icon}</span>}
+    </a>
+  ))}
 </section>
+
+<style>
+  section {
+    text-align: center;
+  }
+
+  a {
+    display: inline-block;
+    margin-right: 12px;
+    text-decoration: none;
+  }
+
+  a:last-child {
+    margin-right: 0;
+  }
+
+  .symbol {
+    font-size: 1.2em;
+  }
+</style>

@@ -1,61 +1,48 @@
 ---
-// index.astro - Main file
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import CurrentProject from '../components/CurrentProject.astro';
 import WorkExperience from '../components/WorkExperience.astro';
-import Projects from '../components/Projects.astro';
 import TechStack from '../components/TechStack.astro';
 import Contact from '../components/Contact.astro';
 
-// Data can be moved to separate files if you prefer
-const projects = [
-  {
-    title: "PaintScope",
-    description: "A simple web app for searching miniature paints. My goal with this page is to make it simple and fast for people to use.",
-    link: "https://project1.example.com",
-    github: "https://github.com/yourusername/project1"
-  },
-  {
-    title: "Averburg",
-    description: "A simple, static web site used for displaying lore for my fictional town of Averburg. It's used in a Warhammer: The Old World tabletop campaign I'm running with some friends.",
-    link: "https://averburg.lucasak.dev",
-    github: "https://github.com/lucasalexanderk/averburg"
-  }
-];
-
 const techStack = [
+  { name: ".NET", symbol: ".NET", icon: "devicon-dotnetcore-plain" },
   { name: "C#", symbol: "C#", icon: "devicon-csharp-plain" },
   { name: "JavaScript", symbol: "JS", icon: "devicon-javascript-plain" },
-  { name: "Tailwind", symbol: "TW", icon: "devicon-tailwindcss-plain" },
   { name: "F#", symbol: "F#", icon: "devicon-fsharp-plain" },
-  { name: "HTMX", symbol: "</>" }, // No specific devicon for HTMX
-  { name: "Astro", symbol: "★", icon: "devicon-astro-plain" }, 
+  { name: "HTMX", symbol: "</>" },
   { name: "HTML", symbol: "<>", icon: "devicon-html5-plain" },
   { name: "CSS", symbol: "CSS", icon: "devicon-css3-plain" },
-  { name: "Java", symbol: "J", icon: "devicon-java-plain" }, 
-  { name: "C", symbol: "C", icon: "devicon-c-plain" }, 
-  { name: "Python", symbol: "Py", icon: "devicon-python-plain" } 
+  { name: "C", symbol: "C", icon: "devicon-c-plain" },
+  { name: "Python", symbol: "Py", icon: "devicon-python-plain" },
+  { name: "SQL", symbol: "SQL", icon: "devicon-microsoftsqlserver-plain" },
+  { name: "noSQL", symbol: "noSQL", icon: "devicon-mongodb-plain" },
+  { name: "Git", symbol: "Git", icon: "devicon-git-plain" },
+  { name: "Azure DevOps", symbol: "ADO", icon: "devicon-azuredevops-plain" },
+  { name: "Linux/Debian", symbol: "Tux", icon: "devicon-debian-plain" },
+  { name: "Docker", symbol: "Docker", icon: "devicon-docker-plain" }
 ];
 
 const contacts = [
   { icon: "devicon-github-plain", value: "https://github.com/LucasAlexanderK" },
   { icon: "devicon-linkedin-plain", value: "https://linkedin.com/in/lucas-kock" },
-  { icon: "devicon-plain", value: "myemail@nope.com" }
+  { icon: "✉", value: "hello@lucasak.dev" }
 ];
 
-
 const experience = [
-  {role : "Consultant",
-  company: "twoday",
-  period: "Sep 2025 - Present",
-  description: "Software projects using technologies such as .NET and Java",
-  link: "https://www.twoday.com"
-  }, 
+  {
+    role: "Consultant",
+    company: "twoday",
+    period: "Sep 2025 - Present",
+    description: "Software projects using .NET, C# and Python.",
+    link: "https://www.twoday.com"
+  },
   {
     role: "Junior Consultant",
     company: "itm8",
     period: "Aug 2024 – July 2025",
-    description: "Working on various full-stack web projects using modern technologies including .NET and front-end frameworks.",
+    description: "Working on various full-stack web projects using .NET, C# and F#.",
     link: "https://www.itm8.com/"
   },
   {
@@ -65,49 +52,36 @@ const experience = [
     description: "I've taught in the courses Interaction Design and Programming and Problem Solving. Both courses are mandatory bachelors courses"
   }
 ];
-
 ---
 
-<BaseLayout title="Hi, I'm Lucas">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" slot="head" />
-  <main class="max-w-2xl mx-auto px-4 py-16 font-mono">
-    <Hero name="Hi, I'm Lucas" intro="I'm a software consultant based in Copenhagen, Denmark." />
-    <WorkExperience experience={experience} />
-    <Projects projects={projects} />
-    <TechStack techStack={techStack} />
-    <Contact contacts={contacts} 
-/>
-  </main>
+<BaseLayout title="lucasak.dev">
+  <div class="page">
+    <main>
+      <Hero name="Hi, I'm Lucas" intro="I'm a computer scientist working as software consultant in Copenhagen, Denmark." />
+      <hr />
+      <CurrentProject
+        title="Setting up a homelab"
+      >
+        <p>
+          Building a homelab from scratch. On the network side, I'm using MikroTik's RouterOS to configure VLANs, firewall rules, DHCP and DNS.
+          On the compute side, I'm running Proxmox on an old Lenovo ThinkCentre to host containers with Kubernetes and Podman.
+        </p>
+      </CurrentProject>
+      <hr />
+      <WorkExperience experience={experience} />
+      <section>
+        <h2>Recommendations</h2>
+        <blockquote>
+          <p>"Lucas brings enough positive energy and excitement about software that he is a strong addition to a team on that basis alone. But he also excels both in practical and theoretical learning and is super quick to put that into practice and deliver solid results. His work is of a high quality and he is always receptive to feedback and eager to improve and deliver something next time that is even better. He also has encyclopedic knowledge of many topics outside of the realm of software development, and he is skilled at integrating this vast wealth of information into his work. I was sad when he left my team, but you should be very happy if you have the opportunity for him to join yours."</p>
+          <footer>— <a href="https://www.linkedin.com/in/chamook/" target="_blank" rel="noopener noreferrer">Adam Guest</a>, Software Architect @ itm8</footer>
+        </blockquote>
+      </section>
+      <hr />
+      <TechStack techStack={techStack} />
+      <hr />
+      <Contact contacts={contacts} />
+    </main>
+    <p class="footer"><small>"One must imagine Sisyphus happy."</small></p>
+  </div>
 </BaseLayout>
 
-<style is:global>
-  /* Global styles to ensure black/white palette */
-  :root {
-    --bg-color: white;
-    --text-color: black;
-  }
-  
-  html, body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-  
-  /* Simple focus states */
-  a:focus, button:focus {
-    outline: 2px solid black;
-    outline-offset: 2px;
-  }
-  
-  /* Simple hover effect */
-  a:hover {
-    opacity: 0.7;
-  }
-  
-  /* Ensure devicons maintain black color */
-  .devicon-csharp-plain,
-  .devicon-javascript-plain,
-  .devicon-tailwindcss-plain,
-  .devicon-fsharp-plain {
-    color: black !important;
-  }
-</style>
