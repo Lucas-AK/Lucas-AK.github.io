@@ -22,6 +22,7 @@
     margin: 0;
     font-family: "Times New Roman", Times, serif;
     color: #000;
+    overflow-wrap: break-word;
   }
   .page {
     max-width: 640px;
@@ -74,5 +75,14 @@
     text-align: center;
     color: #555;
     margin-top: 16px;
+  }
+
+  @media (max-width: 680px) {
+    .page {
+      margin: 0;
+      border-left: none;
+      border-right: none;
+      padding: 16px 16px;
+    }
   }
 </style>

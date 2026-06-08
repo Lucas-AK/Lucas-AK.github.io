@@ -39,4 +39,13 @@ const { techStack } = Astro.props;
     padding: 0;
     margin: 8px 0;
   }
+
+  @media (max-width: 680px) {
+    .tech-list {
+      grid-template-rows: none;
+      grid-auto-flow: row;
+      grid-auto-columns: auto;
+      gap: 4px;
+    }
+  }
 </style>
