@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (
+  await getCollection('blog', ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true
+  )
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const fmt = (d: Date) =>
+  d.toISOString().slice(0, 10);
+---
+
+<BaseLayout title="Blog — lucasak.dev">
+  <div class="page">
+    <main>
+      <h1>Blog</h1>
+      <p><a href="/">← Back home</a> · <a href="/rss.xml">RSS</a></p>
+      <hr />
+      {posts.length === 0 ? (
+        <p>No posts yet.</p>
+      ) : (
+        <ul class="post-list">
+          {posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              <div class="post-meta">
+                <small>{fmt(post.data.pubDate)}</small>
+                {post.data.description && (
+                  <p>{post.data.description}</p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .post-list li {
+    margin-bottom: 16px;
+  }
+  .post-meta {
+    color: #333;
+  }
+  .post-meta p {
+    margin: 2px 0 0 0;
+  }
+</style>
