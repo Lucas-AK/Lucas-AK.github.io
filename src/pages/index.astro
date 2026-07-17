@@ -35,7 +35,7 @@ const experience = [
     role: "Consultant",
     company: "twoday",
     period: "Sep 2025 - Present",
-    description: "Software projects using .NET, C# and Python.",
+    description: "Software projects using .NET, C# and Python. Infrastructure management of IIS, MSSQL and Windows servers. DevOps in Azure and TeamCity. SOAP, REST, RabbitMQ. The list is long. :)",
     link: "https://www.twoday.com"
   },
   {
@@ -61,19 +61,26 @@ const experience = [
       <p><a href="/blog/">Blog →</a></p>
       <hr />
       <CurrentProject
-        title="Setting up a homelab"
+        title="Expanding and configuring self-hosted VPN"
       >
-        <p>
-          Building a homelab from scratch. On the network side, I'm using MikroTik's RouterOS to configure VLANs, firewall rules, DHCP and DNS.
-          On the compute side, I'm running Proxmox on an old Lenovo ThinkCentre to host containers with Kubernetes and Podman.
-        </p>
+      <p>
+      I've set up a Lenovo ThinkCentre with Proxmox, slowly adding LXC containers to it. I've also set up a VPS, which now serves as Headscale control server for my own VPN. So far, my VPS/VPN runs Authelia (for 2FA/OIDC), Headscale, nginx, coreDNS, Redis, step-ca (for internal VPN certificates) and Trilium. 
+
+      Everything is running in rootless Podman containers, which in turn are configured as Quadlets.
+
+      My next steps are to set up Prometheus and Grafana for monitoring. I am also looking into setting up a Ansible playbook to reproduce my whole setup.
+
+      All of this done without AI, as I want to learn things from scratch.
+      </p>
       </CurrentProject>
       <hr />
       <WorkExperience experience={experience} />
       <section>
         <h2>Recommendations</h2>
         <blockquote>
-          <p>"Lucas brings enough positive energy and excitement about software that he is a strong addition to a team on that basis alone. But he also excels both in practical and theoretical learning and is super quick to put that into practice and deliver solid results. His work is of a high quality and he is always receptive to feedback and eager to improve and deliver something next time that is even better. He also has encyclopedic knowledge of many topics outside of the realm of software development, and he is skilled at integrating this vast wealth of information into his work. I was sad when he left my team, but you should be very happy if you have the opportunity for him to join yours."</p>
+          <p>"Lucas brings enough positive energy and excitement about software that he is a strong addition to a team on that basis alone. But he also excels both in practical and theoretical learning and is super quick to put that into practice and deliver solid results. 
+
+          His work is of a high quality and he is always receptive to feedback and eager to improve and deliver something next time that is even better. He also has encyclopedic knowledge of many topics outside of the realm of software development, and he is skilled at integrating this vast wealth of information into his work. I was sad when he left my team, but you should be very happy if you have the opportunity for him to join yours."</p>
           <footer>— <a href="https://www.linkedin.com/in/chamook/" target="_blank" rel="noopener noreferrer">Adam Guest</a>, Software Architect @ itm8</footer>
         </blockquote>
       </section>
